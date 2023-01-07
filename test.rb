@@ -1,0 +1,1 @@
+4.times { |num| puts "Hello, Praveen " + (num + 1).to_s }
