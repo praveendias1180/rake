@@ -1,0 +1,35 @@
+=begin
+Author: Praveen Dias
+=end
+
+##
+# This file is an experiment
+# Use it to backup a db
+
+# rake dump[wordpress]
+desc 'Create a database dump'
+task :dump, [:db_name] do |t, args|
+  STDOUT.puts "Enter mysql username"
+  username = STDIN.gets.strip
+  username = username == '' ? 'praveen' : username
+  puts "Using username: #{username}"
+
+  dbdump = "#{args.db_name}_database_backup_#{Time.now.to_i}.sql"
+  
+  begin
+    system("mysqldump -u #{username} -p #{args.db_name} > #{dbdump}")
+    message = File.zero?(dbdump) ? "Error" : "Successfully dumped: #{dbdump}"
+    puts message
+
+    # If the dump size is zero, delete it!
+    if(File.zero?(dbdump)); File.delete(dbdump) end
+  rescue => e
+    puts "Error: #{e}"
+  end
+end
+
+# rake clean db dumps
+desc 'Remove a database dumps'
+task :clean do |t, args|
+  system("rm *.sql")
+end
