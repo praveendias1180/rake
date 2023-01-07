@@ -1,0 +1,25 @@
+task :default => :mac_and_cheese
+# rake mac_and_cheese
+
+# Pass values to the functions
+# :symbol => value
+
+task :mac_and_cheese => [:boil_water, :buy_pasta, :buy_cheese] do
+    p "Making Mac and Cheese"
+end
+
+task :buy_cheese => [:go_to_store] do
+    p "Buying cheese"
+end
+
+task :buy_pasta => [:go_to_store] do
+    p "Buying Pasta"
+end
+
+task :boil_water => [:buy_cheese, :buy_pasta] do
+    p "Boilling Water"
+end
+
+task :go_to_store do
+    p "Going to the Store"
+end
