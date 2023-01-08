@@ -5,7 +5,7 @@ https://www.youtube.com/watch?v=AFPWDzHWjEY&t=13s
 
 ![](jim.jpeg)
 
-# Rake - Ruby Make
+# Rake - R(uby M)ake
 
 ```
 rake Rakefile
